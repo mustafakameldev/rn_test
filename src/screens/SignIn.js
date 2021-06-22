@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, KeyboardAvoidingView } from 'react-native';
-
 import { Input, Button, ErrorText } from '../components/Form';
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -22,14 +20,11 @@ const useLoginFormState = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [submit, setSubmit] = useState(false);
-
   let isUsernameValid = false;
   let isPasswordValid = false;
-
   if (username === 'example') {
     isUsernameValid = true;
   }
-
   if (password === 'asdf') {
     isPasswordValid = true;
   }
@@ -68,21 +63,16 @@ const useLoginFormState = ({ navigation }) => {
     },
   };
 };
-
 export default ({ navigation }) => {
   const { username, password, submit } = useLoginFormState({ navigation });
-
   let usernameErrorMsg;
   let passwordErrorMsg;
-
   if (submit.value && !username.valid) {
     usernameErrorMsg = 'Invalid username.';
   }
-
   if (submit.value && !password.valid) {
     passwordErrorMsg = 'Invalid password.';
   }
-
   return (
     <KeyboardAvoidingView style={styles.container} behavior="position">
       <Text style={styles.headerText}>Login</Text>
